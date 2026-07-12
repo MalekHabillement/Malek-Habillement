@@ -307,6 +307,17 @@ Version: 1.0.0
     border-radius:14px;
 
 }
+   .order-number{
+    display:inline-block;
+    margin-top:20px;
+    padding:10px 18px;
+    background:#fff;
+    border:2px dashed #8B5E3C;
+    border-radius:10px;
+    font-size:20px;
+    font-weight:700;
+    color:#8B5E3C;
+}
     </style>
     <link
   rel="stylesheet"
@@ -386,10 +397,23 @@ src="https://www.facebook.com/tr?id=1441674799980563&ev=PageView&noscript=1"
 
             <!-- Success Message -->
             <div class="success-msg" id="successMsg">
-                <div class="icon">🎉</div>
-                <div class="title">تم استلام طلبك بنجاح!</div>
-                <div class="text">سنتواصل معك خلال 24 ساعة لتأكيد الطلب وترتيب التوصيل.</div>
-            </div>
+    <div class="icon">🎉</div>
+
+    <div class="title">
+        تم استلام طلبك بنجاح
+    </div>
+
+    <div class="text">
+    📞 سنتصل بك قريبًا لتأكيد المقاس والعنوان وموعد التوصيل.
+    <br><br>
+    📱 يرجى إبقاء هاتفك متاحًا حتى لا يتأخر الطلب.
+</div>
+
+    <div class="order-number">
+        رقم الطلب:
+        <strong id="orderNumber"></strong>
+    </div>
+</div>
 <!-- Customer Reviews -->
 
 <div class="reviews-section">
@@ -846,6 +870,11 @@ src="https://www.facebook.com/tr?id=1441674799980563&ev=PageView&noscript=1"
                 // With no-cors we can't read response, but if no error, assume success
                 orderForm.style.display = 'none';
                 fbq('track', 'Lead');
+                const orderId =
+    "#" +
+    Math.floor(100000 + Math.random() * 900000);
+
+document.getElementById("orderNumber").textContent = orderId;
                 successMsg.classList.add('active');
               successMsg.scrollIntoView({
     behavior: "smooth",
